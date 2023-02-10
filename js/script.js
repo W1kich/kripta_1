@@ -22,7 +22,10 @@ window.addEventListener('DOMContentLoaded', () =>{
 	const input = document.querySelectorAll(".input"),
 				selectButton = document.querySelectorAll('.box__buttons'),
 				resultButton = document.querySelectorAll('.result__buttons'),
-				form = document.querySelector('.form');
+				alf = document.querySelector(".box_input");
+
+		
+
 
 for (let i = 0; i < selectButton.length; i++) {
 	selectButton[i].addEventListener("click", () => {
@@ -75,14 +78,20 @@ function modInverse(k, n) {
 		return 1;
 }
 
-
+alf.addEventListener('input', (e) =>{
+	e.preventDefault();
+	alphabet =alf.value;
+	if(modInverse()){
+		
+	}
+});
 
 
  function affineEncrypt(obj) {
 		if (typeof(obj.msg) ==="string" && typeof(obj.shift) ==="number" && typeof(obj.inc) ==="number") {
 			let result = "";
-			let m = parseInt(obj.shift);
-			let b = parseInt(obj.inc);			
+			let m = obj.shift;
+			let b = obj.inc;			
 				for (let i = 0; i < obj.msg.length; i++) {
 					for(let j = 0; j < alphabet.length; j++){				
 						if(obj.msg[i] === alphabet[j]){
