@@ -81,9 +81,8 @@ function modInverse(k, n) {
 alf.addEventListener('input', (e) =>{
 	e.preventDefault();
 	alphabet =alf.value;
-	if(modInverse()){
-		
-	}
+	
+	
 });
 
 
