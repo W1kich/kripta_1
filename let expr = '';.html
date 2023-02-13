@@ -1,0 +1,140 @@
+let expr = '';
+
+	
+selectButton[0].addEventListener('click', () =>{
+	expr = "1";
+	});
+	
+	
+	
+	selectButton[1].addEventListener('click', () =>{
+		expr = "2";
+		});
+
+
+		selectButton[2].addEventListener('click', () =>{
+		
+			expr = "3";
+			});
+			
+			
+
+
+			switch (expr) {
+				case '1':
+					console.log("case 1");
+					resultButton[0].addEventListener('click', () =>{
+						message.msg = input[0].value.toUpperCase();
+						message.shift = Number(input[1].value);
+						message.isDecrypt = "encrypt";
+						if(message.shift === 0){
+							input[3].value = message.msg;
+							
+						}else{
+							input[3].value = CeasarsCipher(message);
+							
+						}
+						});
+						resultButton[1].addEventListener('click', () =>{
+							message.msg = input[3].value;
+							message.shift = Number(input[1].value);
+							message.isDecrypt = "decrypt";
+							
+							if(message.shift === 0){
+								input[3].value = message.msg;
+								
+							}else{
+								input[3].value = CeasarsCipher(message);
+								
+							}
+							});
+					break;
+				case '2':
+					console.log("case 2");
+					message.inc = 0;
+				resultButton[0].addEventListener('click', () =>{
+				message.msg = input[0].value.toUpperCase();
+				message.shift = Number(input[1].value);
+					
+					
+					if(message.shift === 0){
+						input[3].value = "error";
+						return;
+					}else{
+						message.isDecrypt = "encrypt";
+						input[3].value = affineEncrypt(message);
+						return;
+					}
+					});
+					resultButton[1].addEventListener('click', () =>{
+						message.msg = input[3].value;
+						message.shift = Number(input[1].value);
+						
+						if(message.shift === 0){
+							input[3].value = "error";
+							return;
+						}else{
+							message.isDecrypt = "decrypt";
+							input[3].value = affineDecrypt(message);
+							return;
+						}
+						});
+					
+					break;
+				case '3':
+					console.log("case 3");
+					resultButton[0].addEventListener('click', () =>{
+						message.msg = input[0].value.toUpperCase();
+						message.shift = Number(input[1].value);
+						message.inc = Number(input[2].value);
+							
+							if(message.shift === 0){
+								input[3].value = "error";
+							}else{
+								message.isDecrypt = "encrypt";
+								input[3].value = affineEncrypt(message);
+							}
+							});
+							resultButton[1].addEventListener('click', () =>{
+								message.msg = input[3].value;
+								message.shift = Number(input[1].value);
+								message.inc = Number(input[2].value);
+								
+								if(message.shift === 0){
+									input[3].value = "error";
+								}else{
+									message.isDecrypt = "decrypt";
+									input[3].value = affineDecrypt(message);
+								}
+								});
+				
+					break;
+				default:
+					console.log("case loh");
+					console.log("case 1");
+					resultButton[0].addEventListener('click', () =>{
+						message.msg = input[0].value.toUpperCase();
+						message.shift = Number(input[1].value);
+						message.isDecrypt = "encrypt";
+						if(message.shift === 0){
+							input[3].value = message.msg;
+							
+						}else{
+							input[3].value = CeasarsCipher(message);
+							
+						}
+						});
+						resultButton[1].addEventListener('click', () =>{
+							message.msg = input[3].value;
+							message.shift = Number(input[1].value);
+							message.isDecrypt = "decrypt";
+							
+							if(message.shift === 0){
+								input[3].value = message.msg;
+								
+							}else{
+								input[3].value = CeasarsCipher(message);
+								
+							}
+							});
+			}

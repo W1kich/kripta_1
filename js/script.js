@@ -1,4 +1,4 @@
-// Я, Бутко Денис Васильвич, студент університету.
+// Я, Бутко Денис Васильович, студент університету.
 
 
 
@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', () =>{
 		inc: 0
 		}
 	const alphabet = "_АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ ,.";
-
+		console.log("_АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ ,.".toLowerCase());
 	
 
 
@@ -24,14 +24,10 @@ window.addEventListener('DOMContentLoaded', () =>{
 				resultButton = document.querySelectorAll('.result__buttons'),
 				alf = document.querySelector(".box_input");
 
-		
+				
 
 
-for (let i = 0; i < selectButton.length; i++) {
-	selectButton[i].addEventListener("click", () => {
-		selectButton[i].classList.toggle("red");
-	});
-}
+
 
 function CeasarsCipher(obj){
 	let result = "";
@@ -52,7 +48,7 @@ function CeasarsCipher(obj){
 		return result;
 	}else if(obj.isDecrypt === "decrypt"){
 		for(let i = 0; i < obj.msg.length; i++){
-			for(let j = alphabet.length; j > 0; j--){
+			for(let j = 0; j < alphabet.length; j++){
 				if(obj.msg[i] === alphabet[j]){
 					result +=alphabet[(j+alphabet.length - obj.shift)%alphabet.length];
 					
@@ -78,12 +74,7 @@ function modInverse(k, n) {
 		return 1;
 }
 
-alf.addEventListener('input', (e) =>{
-	e.preventDefault();
-	alphabet =alf.value;
-	
-	
-});
+
 
 
  function affineEncrypt(obj) {
@@ -135,6 +126,9 @@ alf.addEventListener('input', (e) =>{
 
 
 selectButton[0].addEventListener('click', () =>{
+	selectButton[0].classList.toggle("red");
+	selectButton[1].classList.toggle("blue");
+	selectButton[2].classList.toggle("blue");
 	resultButton[0].addEventListener('click', () =>{
 		message.msg = input[0].value.toUpperCase();
 		message.shift = Number(input[1].value);
@@ -161,6 +155,9 @@ selectButton[0].addEventListener('click', () =>{
 	
 	
 	selectButton[1].addEventListener('click', () =>{
+		selectButton[0].classList.toggle("blue");
+		selectButton[1].classList.toggle("red");
+		selectButton[2].classList.toggle("blue");
 		message.inc = 0;
 		resultButton[0].addEventListener('click', () =>{
 		message.msg = input[0].value.toUpperCase();
@@ -189,7 +186,9 @@ selectButton[0].addEventListener('click', () =>{
 
 
 		selectButton[2].addEventListener('click', () =>{
-		
+		selectButton[0].classList.toggle("blue");
+		selectButton[1].classList.toggle("blue");
+		selectButton[2].classList.toggle("red");
 		resultButton[0].addEventListener('click', () =>{
 		message.msg = input[0].value.toUpperCase();
 		message.shift = Number(input[1].value);
@@ -216,7 +215,7 @@ selectButton[0].addEventListener('click', () =>{
 				});
 			});
 			
-			
+		
 
 
 	});	
