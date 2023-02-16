@@ -14,18 +14,14 @@ window.addEventListener('DOMContentLoaded', () =>{
 		inc: 0
 		}
 	const alphabet = "_АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ ,.";
-		console.log("_АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ ,.".toLowerCase());
+		// console.log("_АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ ,.".toLowerCase());
 	
 
 
 
-	const input = document.querySelectorAll(".input"),
-				selectButton = document.querySelectorAll('.box__buttons'),
-				resultButton = document.querySelectorAll('.result__buttons'),
-				alf = document.querySelector(".box_input");
-
+	const form = document.querySelector('.form'),
+				selectButton = document.querySelectorAll('.box__buttons');
 				
-
 
 
 
@@ -51,7 +47,6 @@ function CeasarsCipher(obj){
 			for(let j = 0; j < alphabet.length; j++){
 				if(obj.msg[i] === alphabet[j]){
 					result +=alphabet[(j+alphabet.length - obj.shift)%alphabet.length];
-					
 				}else{
 					continue;
 				}
@@ -104,9 +99,6 @@ function modInverse(k, n) {
 			let result = "";
 			let m = obj.shift;
 			let b = obj.inc;
-			
-			
-			console.log(modInverse(m,alphabet.length));
 				for (let i = 0; i < obj.msg.length; i++) {
 					for(let j = 0; j < alphabet.length; j++){				
 						if(obj.msg[i] === alphabet[j]){
@@ -126,28 +118,37 @@ function modInverse(k, n) {
 
 
 selectButton[0].addEventListener('click', () =>{
-	selectButton[0].classList.toggle("red");
-	selectButton[1].classList.toggle("blue");
-	selectButton[2].classList.toggle("blue");
+	form.innerHTML = '';
+	form.innerHTML = `<h3 class="form__text">Введіть повідомлення</h3>
+	<input class="input" type="text"  name="fname" value="">
+	<h3 class="form__text">Крок шифру k</h3>
+	<input class="input" type="text"  name="fname" value="">
+	<h3 class="form__text">Шифротекст</h3>
+	<input class="input" type="text"  name="fname" value="">
+	<div class="box__container box">
+	<button class="result__buttons">Зашифрувати</button> <button class="result__buttons">Розшифрувати</button>
+	</div>`;
+	const  resultButton = form.querySelectorAll('.result__buttons') ,input = document.querySelectorAll(".input");
+	
 	resultButton[0].addEventListener('click', () =>{
 		message.msg = input[0].value.toUpperCase();
 		message.shift = Number(input[1].value);
 		message.isDecrypt = "encrypt";
 		if(message.shift === 0){
-			input[3].value = message.msg;
+			input[2].value = message.msg;
 		}else{
-			input[3].value = CeasarsCipher(message);
+			input[2].value = CeasarsCipher(message);
 		}
 		});
 		resultButton[1].addEventListener('click', () =>{
-			message.msg = input[3].value;
+			message.msg = input[2].value;
 			message.shift = Number(input[1].value);
 			message.isDecrypt = "decrypt";
 			
 			if(message.shift === 0){
-				input[3].value = message.msg;
+				input[2].value = message.msg;
 			}else{
-				input[3].value = CeasarsCipher(message);
+				input[2].value = CeasarsCipher(message);
 			}
 			});
 	});
@@ -155,41 +156,58 @@ selectButton[0].addEventListener('click', () =>{
 	
 	
 	selectButton[1].addEventListener('click', () =>{
-		selectButton[0].classList.toggle("blue");
-		selectButton[1].classList.toggle("red");
-		selectButton[2].classList.toggle("blue");
-		message.inc = 0;
+		form.innerHTML = '';
+		form.innerHTML = `<h3 class="form__text">Введіть повідомлення</h3>
+		<input class="input" type="text"  name="fname" value="">
+		<h3 class="form__text">Крок шифру k</h3>
+		<input class="input" type="text"  name="fname" value="">
+		<h3 class="form__text">Шифротекст</h3>
+		<input class="input" type="text"  name="fname" value="">
+		<div class="box__container box">
+		<button class="result__buttons">Зашифрувати</button> <button class="result__buttons">Розшифрувати</button>
+		</div>`;
+		const  resultButton = form.querySelectorAll('.result__buttons') ,input = document.querySelectorAll(".input");		message.inc = 0;
 		resultButton[0].addEventListener('click', () =>{
 		message.msg = input[0].value.toUpperCase();
 		message.shift = Number(input[1].value);
 			
 			
 			if(message.shift === 0){
-				input[3].value = "error";
+				input[2].value = "error";
 			}else{
 				message.isDecrypt = "encrypt";
-				input[3].value = affineEncrypt(message);
+				input[2].value = affineEncrypt(message);
 			}
 			});
 			resultButton[1].addEventListener('click', () =>{
-				message.msg = input[3].value;
+				message.msg = input[2].value;
 				message.shift = Number(input[1].value);
 				
 				if(message.shift === 0){
-					input[3].value = "error";
+					input[2].value = "error";
 				}else{
 					message.isDecrypt = "decrypt";
-					input[3].value = affineDecrypt(message);
+					input[2].value = affineDecrypt(message);
 				}
 				});
 		});
 
 
 		selectButton[2].addEventListener('click', () =>{
-		selectButton[0].classList.toggle("blue");
-		selectButton[1].classList.toggle("blue");
-		selectButton[2].classList.toggle("red");
-		resultButton[0].addEventListener('click', () =>{
+		
+			form.innerHTML = '';
+			form.innerHTML = `<h3 class="form__text">Введіть повідомлення</h3>
+			<input class="input" type="text"  name="fname" value="">
+			<h3 class="form__text">Крок шифру k</h3>
+			<input class="input" type="text"  name="fname" value="">
+			<h3 class="form__text">Крок шифру j (для Афінного шифру)</h3>
+			<input class="input" type="text"  name="fname" value="">
+			<h3 class="form__text">Шифротекст</h3>
+			<input class="input" type="text"  name="fname" value="">
+			<div class="box__container box">
+			<button class="result__buttons">Зашифрувати</button> <button class="result__buttons">Розшифрувати</button>
+			</div>`;
+			const  resultButton = form.querySelectorAll('.result__buttons') ,input = document.querySelectorAll(".input");		resultButton[0].addEventListener('click', () =>{
 		message.msg = input[0].value.toUpperCase();
 		message.shift = Number(input[1].value);
 		message.inc = Number(input[2].value);
