@@ -200,7 +200,7 @@ selectButton[0].addEventListener('click', () =>{
 			<input class="input" type="text"  name="fname" value="">
 			<h3 class="form__text">Крок шифру k</h3>
 			<input class="input" type="text"  name="fname" value="">
-			<h3 class="form__text">Крок шифру j (для Афінного шифру)</h3>
+			<h3 class="form__text">Крок шифру j </h3>
 			<input class="input" type="text"  name="fname" value="">
 			<h3 class="form__text">Шифротекст</h3>
 			<input class="input" type="text"  name="fname" value="">
