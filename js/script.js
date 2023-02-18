@@ -66,7 +66,7 @@ function modInverse(k, n) {
 			if ((k * i) % n === 1)
 				return i;
 		}
-		return 1;
+		return 0;
 }
 
 
@@ -80,6 +80,10 @@ function modInverse(k, n) {
 				for (let i = 0; i < obj.msg.length; i++) {
 					for(let j = 0; j < alphabet.length; j++){				
 						if(obj.msg[i] === alphabet[j]){
+							if(modInverse(m,alphabet.length){
+							   	alert("Ви ввели не взаємо прості числа!!!");
+								return "";
+							   }
 							result += alphabet[((m * j + b)%alphabet.length)];
 						}else{
 							continue;
@@ -102,6 +106,10 @@ function modInverse(k, n) {
 				for (let i = 0; i < obj.msg.length; i++) {
 					for(let j = 0; j < alphabet.length; j++){				
 						if(obj.msg[i] === alphabet[j]){
+							if(modInverse(m,alphabet.length){
+							   	alert("Ви ввели не взаємо прості числа!!!");
+								return "";
+							   }
 							result += alphabet[((modInverse(m,alphabet.length) * (j + alphabet.length - b)) % alphabet.length)];
 						}else{
 							continue;
